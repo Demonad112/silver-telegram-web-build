@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google"
 import { SiteFooter } from "@/components/site/site-footer"
+import { JsonLd } from "@/components/site/json-ld"
 import { SiteHeader } from "@/components/site/site-header"
 import { site } from "@/lib/site"
 import "./globals.css"
@@ -27,6 +28,7 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
     default: `${site.name} | AI automation & managed IT for Calgary trades`,
     template: `%s | ${site.name}`,
@@ -52,6 +54,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: site.name,
+            description: site.description,
+            url: site.url,
+            email: site.email,
+            areaServed: { "@type": "AdministrativeArea", name: "Alberta, Canada" },
+            address: { "@type": "PostalAddress", addressLocality: "Calgary", addressRegion: "AB", addressCountry: "CA" },
+          }}
+        />
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}
