@@ -4,6 +4,8 @@ export const site = {
   description:
     "AI automation and managed IT for Calgary trades and small businesses. Security-first systems that answer every call, quote faster, and keep your business running.",
   location: "Calgary, Alberta",
+  // TODO(content): confirm the production domain; override with NEXT_PUBLIC_SITE_URL.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://obsidianintelligence.ca",
   email: "hello@obsidianintelligence.ca", // TODO(content): confirm address and domain
   cta: { label: "Book a free audit", href: "/contact" },
 } as const
