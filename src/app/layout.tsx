@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google"
 import { SiteFooter } from "@/components/site/site-footer"
+import { MotionProvider } from "@/components/motion/motion-provider"
 import { JsonLd } from "@/components/site/json-ld"
 import { SiteHeader } from "@/components/site/site-header"
 import { site } from "@/lib/site"
@@ -66,11 +67,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             address: { "@type": "PostalAddress", addressLocality: "Calgary", addressRegion: "AB", addressCountry: "CA" },
           }}
         />
-        <SiteHeader />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <noscript>
+          <style>{"[data-scene] [data-lit],[data-reveal]{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
+        <MotionProvider>
+          <SiteHeader />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   )

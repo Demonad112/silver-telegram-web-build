@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { ArrowUpRightIcon } from "lucide-react"
+import { Magnetic } from "@/components/motion/magnetic"
+import { Reveal } from "@/components/motion/reveal"
 import { SectionHeading } from "@/components/site/section-heading"
 import { buttonVariants } from "@/components/ui/button"
 import { finalCta, leaks, services, steps, trades, trust } from "@/content/home"
@@ -14,7 +16,8 @@ export function Leaks() {
     <section aria-labelledby="leaks-title" className={section}>
       <div className={container}>
         <SectionHeading id="leaks-title" code="OI-002" eyebrow={leaks.eyebrow} title={leaks.title} />
-        <ul className="mt-14 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="mt-14">
+<ul className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {leaks.items.map((item, i) => (
             <li key={item.title} className="bg-obsidian-950 p-6">
               <p className="font-mono text-xs text-muted-foreground">
@@ -25,6 +28,7 @@ export function Leaks() {
             </li>
           ))}
         </ul>
+        </Reveal>
       </div>
     </section>
   )
@@ -41,7 +45,8 @@ export function Services() {
           title="Two jobs, one partner."
           body="Automation brings the work in. Managed IT keeps the business running safely underneath it."
         />
-        <div className="mt-14 grid gap-4 md:grid-cols-2">
+        <Reveal className="mt-14">
+<div className="grid gap-4 md:grid-cols-2">
           {services.map((svc) => (
             <Link
               key={svc.href}
@@ -70,6 +75,7 @@ export function Services() {
             </Link>
           ))}
         </div>
+        </Reveal>
       </div>
     </section>
   )
@@ -80,7 +86,8 @@ export function HowItWorks() {
     <section id="how-it-works" aria-labelledby="how-title" className={cn(section, "scroll-mt-16")}>
       <div className={container}>
         <SectionHeading id="how-title" code="OI-004" eyebrow="How it works" title="Audit. Build. Run." />
-        <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-6">
+        <Reveal className="mt-14">
+<ol className="grid gap-10 md:grid-cols-3 md:gap-6">
           {steps.map((step) => (
             <li key={step.n} className="border-t border-ember-500/50 pt-6">
               <p className="font-heading text-5xl font-extrabold text-obsidian-700 [font-stretch:125%]">{step.n}</p>
@@ -89,6 +96,7 @@ export function HowItWorks() {
             </li>
           ))}
         </ol>
+        </Reveal>
       </div>
     </section>
   )
@@ -127,7 +135,8 @@ export function Trades() {
             All playbooks
           </Link>
         </div>
-        <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="mt-14">
+<ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {trades.map((t, i) => (
             <li key={t.slug}>
               <Link
@@ -145,6 +154,7 @@ export function Trades() {
             </li>
           ))}
         </ul>
+        </Reveal>
       </div>
     </section>
   )
@@ -166,15 +176,19 @@ export function FinalCta() {
             {finalCta.title}
           </h2>
           <p className="relative mt-5 max-w-[56ch] text-lg leading-relaxed text-muted-foreground">{finalCta.body}</p>
-          <Link
-            href={site.cta.href}
-            className={buttonVariants({
-              size: "lg",
-              className: "relative mt-10 h-12 px-6 text-base hover:shadow-[0_0_32px_-4px_var(--ember-500)]",
-            })}
-          >
-            {site.cta.label}
-          </Link>
+          <div className="relative mt-10">
+            <Magnetic>
+              <Link
+                href={site.cta.href}
+                className={buttonVariants({
+                  size: "lg",
+                  className: "h-12 px-6 text-base hover:shadow-[0_0_32px_-4px_var(--ember-500)]",
+                })}
+              >
+                {site.cta.label}
+              </Link>
+            </Magnetic>
+          </div>
         </div>
       </div>
     </section>

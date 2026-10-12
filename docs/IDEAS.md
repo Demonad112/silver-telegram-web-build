@@ -18,3 +18,7 @@ One line each. `[accepted]` = in the plan, `[rejected]` = dropped with reason, `
 - [pending] (suggestion) Home sections lean on the same bordered-grid pattern; vary rhythm at Checkpoint 1 (e.g. a full-bleed band or editorial pull quote).
 - [pending] (suggestion) Real-trade imagery and a founder photo on /about once supplied; no stock photos.
 - [pending] (suggestion) Per-route `next/og` OG images (CP2 candidate).
+- [accepted] Scroll-pinned hero scene; static lit fallback for reduced motion and no-JS (batch 4).
+- [pending] (suggestion) Reuse `ScrollWorkflow` on `/playbooks/[slug]` and `/automation` so diagrams animate on view (idea #5); one-line swap, not done yet.
+- [pending] (suggestion) Header is still a whole client component; split scroll state into a small wrapper around a server-rendered nav to cut hydration.
+- [pending] Accordion trigger focus ring still the shadcn default; verify visually in the polish pass.
