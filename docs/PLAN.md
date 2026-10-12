@@ -1,8 +1,8 @@
 # Plan: Obsidian Intelligence marketing site
 
-Status: **DRAFT, awaiting approval.** Nothing below is built. Batches start only after approval.
+Status: **APPROVED 2026-10-12** (project identity confirmed, Volcanic Glass approved). Batch 1 done.
 
-## Inferred inputs (correct these first)
+## Inferred inputs (confirmed by owner 2026-10-12)
 
 The brief's brackets were empty and the uploaded `site-starter.tgz` contained only a scaffold (same files the scaffold commands produce, plus `setup.sh`). No brand assets, copy, photos, or reference sites were provided. I inferred:
 
@@ -183,7 +183,7 @@ View Transitions API page transitions; WebGL obsidian shard hero (Three.js / R3F
 
 | Batch | Goal | Files touched | Acceptance test | Cost |
 |---|---|---|---|---|
-| 1 | Tokens, fonts, layout, header, mobile nav, footer, theme | `globals.css`, `layout.tsx`, `components/site/*`, `components/ui/*` (sheet, navigation-menu), `package.json` (move shadcn to dev) | Build + lint pass; header/footer correct at 390 and 1440; keyboard tab order; contrast check on tokens | Medium |
+| 1 ✅ | Tokens, fonts, layout, header, mobile nav, footer, theme | `globals.css`, `layout.tsx`, `components/site/*`, `components/ui/sheet`, `package.json` (move shadcn to dev) | Build + lint pass; header/footer correct at 390 and 1440; keyboard tab order; contrast check on tokens | Medium |
 | 2 | Home structure with real-ish copy and static Missed Call diagram (no scroll motion yet) | `app/page.tsx`, `components/home/*`, `components/workflow/*`, `content/home.ts` | All sections render; static diagram readable at 390; LCP element is text | Medium |
 | 3 | Remaining static pages + playbooks data + 404 + privacy + metadata/sitemap/robots | `app/*/page.tsx`, `content/*.ts`, `app/sitemap.ts`, `app/robots.ts` | Every route builds static; titles unique; no console errors | Large |
 | CP1 | Base review | `docs/` | Report and wait | Small |
@@ -204,3 +204,9 @@ View Transitions API page transitions; WebGL obsidian shard hero (Three.js / R3F
 | Form backend needs a secret and an account | Blocks the Final batch | Choose provider at CP2; `.env.example` only, no committed secrets |
 | Vercel MCP auth in cloud sessions | Can't inspect deploys from here | Vercel Git integration deploys on push; inspect in dashboard |
 | Lighthouse in this container | Local lab numbers differ from real devices | Run on Vercel preview URL; treat as lab data |
+
+## Batch log
+
+| Batch | Result | Notes |
+|---|---|---|
+| 1 | Done | Tokens mapped onto shadcn variables; Archivo (`wdth` axis) + Plex Sans + Plex Mono; sticky header with scroll state; Sheet mobile nav; footer; skip link. Changes from plan: dropped `navigation-menu` (5 flat links need no dropdowns); button focus switched from an ember ring (invisible on ember fill) to a 2px offset outline. Footer year uses a `"use cache"` component because Cache Components forbids `new Date()` during prerender, so routes revalidate daily. Token contrast: lowest pair 6.98:1. |
