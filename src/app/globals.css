@@ -153,3 +153,12 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Scroll scene and reveals: reduced-motion users get the fully-lit static state from first paint. */
+@media (prefers-reduced-motion: reduce) {
+  [data-scene] [data-lit],
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

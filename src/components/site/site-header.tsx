@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { buttonVariants } from "@/components/ui/button"
@@ -12,9 +12,18 @@ import { cn } from "@/lib/utils"
 export function SiteHeader() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastY = useRef(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 8)
+      // Hide while scrolling down past the first screen; reveal on any upward scroll.
+      if (y > 240 && y > lastY.current + 4) setHidden(true)
+      else if (y < lastY.current - 4 || y <= 240) setHidden(false)
+      lastY.current = y
+    }
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
@@ -23,7 +32,8 @@ export function SiteHeader() {
   return (
     <header
       data-scrolled={scrolled || undefined}
-      className="sticky top-0 z-40 border-b border-transparent transition-colors duration-300 ease-out-glass data-scrolled:border-line data-scrolled:bg-obsidian-950/80 data-scrolled:backdrop-blur-md"
+      data-hidden={hidden || undefined}
+      className="sticky top-0 z-40 border-b border-transparent transition-[background-color,border-color,transform] duration-300 ease-out-glass data-hidden:-translate-y-full data-hidden:focus-within:translate-y-0 data-scrolled:border-line data-scrolled:bg-obsidian-950/80 data-scrolled:backdrop-blur-md"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 md:px-8">
         <Logo />
