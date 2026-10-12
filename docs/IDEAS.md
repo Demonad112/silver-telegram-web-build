@@ -7,18 +7,35 @@ One line each. `[accepted]` = in the plan, `[rejected]` = dropped with reason, `
 - [accepted] Signature hero "The Missed Call": scroll-driven workflow from missed call to paid invoice with a recovered-value counter.
 - [accepted] (suggestion) Lead with the founder's security/investigation background as the differentiator: "automation audited like evidence."
 - [accepted] (suggestion) Trade-specific `/playbooks/[slug]` pages for proof by specificity and local SEO.
-- [pending] (suggestion) "Cost of missed calls" calculator on home or /automation (inputs: calls/week, close rate, avg job value).
+- [pending] (suggestion) "Cost of missed calls" calculator on home or /automation (inputs: calls/week, close rate, avg job value). CP2 rec: build (+0.2 KB measured, formula only, no invented defaults). See FEATURE_REPORT §3.6.
 - [accepted] Dark-only theme for v1; light theme later if needed.
 - [accepted] Move `shadcn` CLI to devDependencies (all 7 high audit findings come through it).
 - [accepted] Keep Next.js rather than switching to Astro; mitigate JS with server components and LazyMotion.
 - [rejected] Purple/blue AI gradients: reads as generic AI SaaS.
 - [rejected] Invented testimonials, client logos, or stats: misleading; leave slots empty until real proof exists.
-- [pending] (suggestion) Ambitious stretch for CP2: real-time WebGL obsidian shard that fractures into the workflow nodes as the hero scroll begins.
-- [pending] (suggestion) Header CTA is hidden below 640px to avoid crowding; consider a sticky bottom "Book a free audit" bar on mobile instead (batch 4).
+- [pending] (suggestion) Ambitious stretch for CP2: real-time WebGL obsidian shard that fractures into the workflow nodes as the hero scroll begins. CP2 rec: reject (three +128.7 KB, R3F +234.7 KB, OGL +13.1 KB gz measured; hero LCP is text). §3.11.
+- [pending] (suggestion) Header CTA is hidden below 640px to avoid crowding; consider a sticky bottom "Book a free audit" bar on mobile instead (batch 4). CP2 rec: build as a pure-CSS server component, 0 JS; handle WCAG 2.4.11. §3.4.
 - [pending] (suggestion) Home sections lean on the same bordered-grid pattern; vary rhythm at Checkpoint 1 (e.g. a full-bleed band or editorial pull quote).
 - [pending] (suggestion) Real-trade imagery and a founder photo on /about once supplied; no stock photos.
-- [pending] (suggestion) Per-route `next/og` OG images (CP2 candidate).
+- [pending] (suggestion) Per-route `next/og` OG images (CP2 candidate). CP2 rec: build; verified static under Cache Components, 0 client JS. §3.8.
 - [accepted] Scroll-pinned hero scene; static lit fallback for reduced motion and no-JS (batch 4).
-- [pending] (suggestion) Reuse `ScrollWorkflow` on `/playbooks/[slug]` and `/automation` so diagrams animate on view (idea #5); one-line swap, not done yet.
-- [pending] (suggestion) Header is still a whole client component; split scroll state into a small wrapper around a server-rendered nav to cut hydration.
-- [pending] Accordion trigger focus ring still the shadcn default; verify visually in the polish pass.
+- [pending] (suggestion) Reuse `ScrollWorkflow` on `/playbooks/[slug]` and `/automation` so diagrams animate on view (idea #5); one-line swap, not done yet. CP2 rec: build. §3.7.
+- [pending] (suggestion) Header is still a whole client component; split scroll state into a small wrapper around a server-rendered nav to cut hydration. CP2 rec: fold into Batch 5 JS diet. §3.1.
+- [pending] Accordion trigger focus ring still the shadcn default; verify visually in the polish pass. CP2 rec: consider native `<details name>` FAQ (0 JS) in Batch 5. §3.1.
+- [pending] CP2 finding: measured home first-load JS is 223.8 KB gz (framework floor 132 KB), not 45 KB; local Lighthouse home perf 83, LCP 3.7 s, a11y 95 (dimmed-node contrast, heading order). Rec: Batch 5 baseline repair and re-set the JS budget. FEATURE_REPORT §0.
+- [pending] (suggestion) Contact form: Server Action + Resend + Turnstile + honeypot + one Vercel WAF rate-limit rule; runner-up Formspree. Prototype verified static and no-JS. §3.2, §4.1.
+- [pending] (suggestion) Booking: Cal.com hosted link-out (0 KB); runner-up Google Calendar appointment page; embed only as click-to-load. §4.2.
+- [pending] (suggestion) Vercel Web Analytics with conversion events (`book_click`, `tel_click`, `form_submit`); runner-up Plausible. §4.3.
+- [pending] (suggestion) Vercel Pro ($20/mo) required: Hobby is non-commercial only. §4.4.
+- [pending] (suggestion) Click-to-call `tel:` button and JSON-LD telephone (needs the owner's number). §3.3.
+- [pending] (suggestion) Security headers (no nonce CSP) and `security.txt`. §3.9.
+- [pending] (suggestion) Claim and verify the Google Business Profile (owner action, no code). §3.18.
+- [pending] React `<ViewTransition>` page transitions: +0.0 KB measured; CP2 rec: defer as late polish. §3.10.
+- [pending] GSAP ScrollTrigger: CP2 rec: reject (+42.6 KB, second runtime; licence is free for commercial use). §3.12.
+- [pending] Lenis smooth scroll: CP2 rec: reject (+5.0 KB, nothing on touch, a11y risk). §3.13.
+- [pending] Rive workflow nodes: CP2 rec: reject (+63 KB JS and 811 KB gz WASM from unpkg by default). §3.14.
+- [pending] cmdk command palette: CP2 rec: reject (+19.2 KB, pulls Radix next to Base UI). §3.15.
+- [pending] MDX for playbooks: CP2 rec: reject for now (structured data). §3.16.
+- [pending] Audio feedback: CP2 rec: reject.
+- [pending] Pricing toggle: CP2 rec: reject (no prices exist). Service-split hover and pointer-responsive facets: CP2 rec: defer. `wdth` heading animation: CP2 rec: reject on the h1. §3.17.
+- [pending] Google Places review embed, Google Maps embed, per-city landing pages, `aggregateRating` in own JSON-LD: CP2 rec: reject. §3.18.
